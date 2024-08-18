@@ -1,4 +1,6 @@
 import Modal from 'react-modal';
+import styles from './Modal.module.css';
+Modal.setAppElement('#root');
 
 const ImageModal = ({ modalClose, modalOpen, image }) => {
   return (
@@ -7,7 +9,7 @@ const ImageModal = ({ modalClose, modalOpen, image }) => {
       isOpen={modalOpen}
       contentLabel="Image Modal"
     >
-      <div>
+      <div className={styles.overlay}>
         <img src={image} alt="" />
       </div>
     </Modal>
