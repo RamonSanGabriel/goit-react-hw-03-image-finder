@@ -3,6 +3,7 @@ import styles from './App.module.css';
 import { Searchbar } from './Searchbar/Searchbar';
 import { getAPI } from 'pixabay-api';
 import toast, { Toaster } from 'react-hot-toast';
+import { ImageGallery } from './ImageGallery/ImageGallery';
 
 export class App extends Component {
   state = {
@@ -42,10 +43,22 @@ export class App extends Component {
       }
       if (page * 12 >= totalHits) {
         this.setState({ isEnd: true });
-        toast("We're sorry, but you've reached the end of search results");
+        toast("We're sorry, but you've reached the end of search results", {
+          icon: '😔',
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+        });
       }
+      this.setState(prevState => ({
+        images: [...prevState.images, ...hits],
+      }));
     } catch (error) {
+      this.setState({ isError: true });
     } finally {
+      this.setState({ isLoading: false });
     }
   };
   handleSubmit = e => {
@@ -67,6 +80,9 @@ export class App extends Component {
     return (
       <div className={styles.App}>
         <Searchbar onSubmit={this.handleSubmit} />
+        {images.length >= 1 && <ImageGallery photos={images} />}
+        {isError &&
+          toast.error('Oops, something went wrong! Reloading this page!')}
         <Toaster position="bottom-right" reverseOrder={false} />
       </div>
     );
