@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ImageModal from 'components/Modal/Modal';
 
 export class ImageGalleryItem extends Component {
   state = {
@@ -16,6 +17,11 @@ export class ImageGalleryItem extends Component {
     return (
       <li onClick={this.handleOpenModal}>
         <img src={webformatURL} alt={tags} />
+        <ImageModal
+          modalClose={this.handleCloseModal}
+          modalOpen={selectedImage !== null}
+          image={selectedImage}
+        />
       </li>
     );
   }

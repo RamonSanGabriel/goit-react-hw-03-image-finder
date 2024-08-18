@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 
-export const ImageModal = ({ modalClose, modalOpen, image }) => {
+const ImageModal = ({ modalClose, modalOpen, image }) => {
   return (
     <Modal
       onRequestClose={modalClose}
@@ -14,4 +14,4 @@ export const ImageModal = ({ modalClose, modalOpen, image }) => {
   );
 };
 
-export default Modal;
+export default ImageModal;

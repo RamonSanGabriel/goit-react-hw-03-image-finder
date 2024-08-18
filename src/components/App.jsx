@@ -1,9 +1,11 @@
 import { Component } from 'react';
-import styles from './App.module.css';
-import { Searchbar } from './Searchbar/Searchbar';
-import { getAPI } from 'pixabay-api';
-import toast, { Toaster } from 'react-hot-toast';
+import { Button } from './Button/Button';
 import { ImageGallery } from './ImageGallery/ImageGallery';
+import { Loader } from './Loader/Loader';
+import { Searchbar } from './Searchbar/Searchbar';
+import styles from './App.module.css';
+import { getAPI } from '../pixabay-api';
+import toast, { Toaster } from 'react-hot-toast';
 
 export class App extends Component {
   state = {
@@ -43,7 +45,7 @@ export class App extends Component {
       }
       if (page * 12 >= totalHits) {
         this.setState({ isEnd: true });
-        toast("We're sorry, but you've reached the end of search results", {
+        toast("We're sorry, but you've reached the end of search results.", {
           icon: '😔',
           style: {
             borderRadius: '10px',
@@ -81,6 +83,8 @@ export class App extends Component {
       <div className={styles.App}>
         <Searchbar onSubmit={this.handleSubmit} />
         {images.length >= 1 && <ImageGallery photos={images} />}
+        {images.length >= 2 && !isEnd && <Button onClick={this.handleClick} />}
+        {isLoading && <Loader />}
         {isError &&
           toast.error('Oops, something went wrong! Reloading this page!')}
         <Toaster position="bottom-right" reverseOrder={false} />
