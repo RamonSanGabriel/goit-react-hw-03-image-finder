@@ -3,7 +3,7 @@ import styles from './Searchbar.module.css';
 
 export const Searchbar = ({ onSubmit }) => {
   return (
-    <header className={styles.searchbar}>
+    <header className={styles.searchBar}>
       <form className={styles.searchForm} onSubmit={onSubmit}>
         <button type="submit" className={styles.searchFormButton}>
           <FaSearch />

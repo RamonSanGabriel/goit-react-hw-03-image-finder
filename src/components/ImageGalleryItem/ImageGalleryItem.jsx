@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import ImageModal from 'components/Modal/Modal';
+import styles from './ImageGalleryItem.module.css';
 
 export class ImageGalleryItem extends Component {
   state = {
@@ -12,10 +13,10 @@ export class ImageGalleryItem extends Component {
     this.setState({ selectedImage: null });
   };
   render() {
-    const { selectedImage } = this.setState;
+    const { selectedImage } = this.state;
     const { webformatURL, tags } = this.props;
     return (
-      <li onClick={this.handleOpenModal}>
+      <li className={styles.galleryItem} onClick={this.handleOpenModal}>
         <img src={webformatURL} alt={tags} />
         <ImageModal
           modalClose={this.handleCloseModal}
