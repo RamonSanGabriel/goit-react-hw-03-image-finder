@@ -3,8 +3,8 @@ import { Button } from './Button/Button';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Loader } from './Loader/Loader';
 import { Searchbar } from './Searchbar/Searchbar';
-import styles from './App.module.css';
 import { getAPI } from '../pixabay-api';
+import styles from './App.module.css';
 import toast, { Toaster } from 'react-hot-toast';
 
 export class App extends Component {
