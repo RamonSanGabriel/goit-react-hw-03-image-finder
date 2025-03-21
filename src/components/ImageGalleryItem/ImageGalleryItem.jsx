@@ -7,7 +7,8 @@ export class ImageGalleryItem extends Component {
     selectedImage: null,
   };
   handleOpenModal = () => {
-    this.setState({ selectedImage: this.props.largeImageURL });
+    // this.setState({ selectedImage: this.props.largeImageURL });
+    console.log({ selectedImage: this.props.largeImageURL });
   };
   handleCloseModal = () => {
     this.setState({ selectedImage: null });
