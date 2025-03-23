@@ -28,7 +28,7 @@ export class App extends Component {
       this.setState({ isLoading: true });
 
       const fetchedImages = await getAPI(search, page);
-
+      console.log(fetchedImages);
       const { hits, totalHits } = fetchedImages;
 
       if (search === '') return;
@@ -79,6 +79,7 @@ export class App extends Component {
 
   render() {
     const { images, isLoading, isError, isEnd } = this.state;
+    // console.log(images);
     return (
       <div className={styles.App}>
         <Searchbar onSubmit={this.handleSubmit} />
